@@ -56,9 +56,9 @@ router.get('/dynamic-rss', function(req, res, next) {
           `<?xml version="1.0" encoding="UTF-8"?>
       <rss version="2.0">
       <channel>
-      <title>91porn</title>
-      <link>https://www.91porn.com/</link>
-      <description>自制的91porn rss</description>
+      <title>用户${uid}的动态</title>
+      <link>https://t.bilibili.com/</link>
+      <description>用户${uid}的动态</description>
       <language>zh-cn</language>
       <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
       <ttl>300</ttl>`
@@ -71,7 +71,7 @@ router.get('/dynamic-rss', function(req, res, next) {
       res.end(rss);
     })
     .catch(function (error) {
-      console.log(error);
+      res.end(error);
     });
 });
 module.exports = router;
