@@ -49,8 +49,9 @@ router.get('/dynamic-rss', function(req, res, next) {
   axios.get(url)
     .then(function (response) {
       const { data } = response;
-
-      var list = data.data.cards;
+      const str = JSON.stringify(data);
+      const result = str.replace(/\\/g, '').replace(/"{/g, '{').replace(/}"/g, '}').replace(/"\[{/g, '[{').replace(/}\]"/, '}]');
+      var list = JSON.parse(result).data.cards;
       var rss =
           `<?xml version="1.0" encoding="UTF-8"?>
       <rss version="2.0">
